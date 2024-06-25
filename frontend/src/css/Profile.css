@@ -1,0 +1,18 @@
+div.profile-header {
+    margin: 0 0 40px 10px;
+}
+
+div.profile h2 {
+    margin: 0;
+    color: rgb(63, 63, 63);
+}
+
+div.profile p {
+    font-size: 13px;
+    margin: 0 0 0 8px;
+    color: rgb(150, 150, 150);
+}
+
+img.profile-image {
+    height: 300px;
+}

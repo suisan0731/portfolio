@@ -1,0 +1,14 @@
+{
+  "presets": [
+    /* ES6 -> ES5 の変換に必要なプリセット設定 */
+    "@babel/preset-env",
+
+    /* JSX -> JS の変換に必要なプリセット設定 */
+    ["@babel/preset-react", {"runtime": "automatic"}]
+  ]
+}
+
+/*
+babelとは新しい規格のESが古いブラウザに対応するためのトランスパイラ
+
+*/

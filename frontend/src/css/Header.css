@@ -1,0 +1,14 @@
+div.header {
+    margin: 0 0 30px 10px;
+}
+
+div.header h1 {
+    margin: 0;
+    color: rgb(63, 63, 63);
+}
+
+div.header p {
+    font-size: 13px;
+    margin: 0 0 0 10px;
+    color: rgb(150, 150, 150);
+}
