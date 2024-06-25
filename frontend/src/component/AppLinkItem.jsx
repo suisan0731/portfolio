@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/AppLinkItem.css'
+import '../css/AppLinkItem.css';
 
 function AppLinkItem({app}) {
     return (

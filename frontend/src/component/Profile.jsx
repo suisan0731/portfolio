@@ -1,14 +1,14 @@
 import React from 'react';
 import '../css/Profile.css';
 import ProfileImage from '../images/profile.png';
+import ProfileText from './ProfileText';
 
-function Profile({props}) {
-    console.log(props.profile.image_url);
+function Profile({profileTexts}) {
     return (
         <div className="profile">
             <div className="profile-header">
                 <h2 className="fs-1">Profile</h2>
-                <p className>- プロフィール -</p>
+                <p>- プロフィール -</p>
             </div>
             <div className="d-md-flex flex-row profile-info">
                 <div>
@@ -18,12 +18,12 @@ function Profile({props}) {
                 </div>
                 <div className="m-4 profile-text">
                     <ul>
-                        {props.profile.texts.map((txt) => <li className="fs-5">{txt}</li>)}
+                        {profileTexts && profileTexts.map((profileText) => <ProfileText text={profileText.text} key={profileText.id}/>)}
                     </ul>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Profile;

@@ -4,43 +4,32 @@ import Profile from './Profile';
 import '../css/App.css';
 import React from 'react';
 //import ReactDOM from 'react-dom';
+import { useState, useEffect } from 'react';
 
 
 function App() {
 
-  /* 仮データ */
-  const props = {
-    "apps": [
-      {
-          "name": "sample1",
-          "description": "sample1 description",
-          "url": "",
-      },
-      {
-          "name": "sample2",
-          "description": "sample2 description",
-          "url": "",
-      },
-      {
-          "name": "sample3",
-          "description": "sample3 description",
-          "url": "",
-      }
-    ],
-    "profile": {
-      "texts": [
-        "aaaaaa",
-        "bbbbbbbb",
-        "cccccccc",
-      ],
-    }
-  };
+  const [apps, setApps] = useState(0);
+  const [profileTexts, setProfileTexts] = useState(0);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/apps/")
+    .then(res => res.json())
+    .then(json => setApps(json))
+    .catch(err => console.log(err))
+
+    fetch("http://127.0.0.1:8000/api/profileTexts/")
+    .then(res => res.json())
+    .then(json => setProfileTexts(json))
+    .catch(err => console.log(err))
+  }, []);
+
 
   return (
       <div className="bg-white m-4 p-4 rounded app">
           <Header />
-          <AppLinkItems props={props} />
-          <Profile props={props}/>
+          <AppLinkItems apps={apps} />
+          <Profile profileTexts={profileTexts}/>
       </div>
   );
 }
