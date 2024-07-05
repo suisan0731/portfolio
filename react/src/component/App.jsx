@@ -13,12 +13,12 @@ function App() {
   const [profileTexts, setProfileTexts] = useState(0);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/apps/")
+    fetch("/api/apps/")
     .then(res => res.json())
     .then(json => setApps(json))
     .catch(err => console.log(err))
 
-    fetch("http://127.0.0.1:8000/api/profileTexts/")
+    fetch("/api/profileTexts/")
     .then(res => res.json())
     .then(json => setProfileTexts(json))
     .catch(err => console.log(err))

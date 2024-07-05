@@ -135,7 +135,15 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+# 開発環境下で静的ファイルを参照する先
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# 本番環境で静的ファイルを参照する先
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# メディアファイルpath
+MEDIA_URL = '/media/' # 追加
 
 
 
@@ -145,6 +153,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #CORS対策
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
-]
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+
+#nginx -> djangoのCSRF対策
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8080']
