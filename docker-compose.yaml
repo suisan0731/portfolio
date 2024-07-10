@@ -1,13 +1,15 @@
 services:
   db:
     image: postgres:15.4
+    expose:
+      - 5432
     volumes:
       - postgres-data:/var/lib/postgresql/data
     restart: always
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DATABASE: ${DB_NAME}
+      POSTGRES_DB: ${DB_NAME}
 
   django:
     build: ./django
@@ -19,21 +21,25 @@ services:
       - 8000
     depends_on:
       - db
+  
+  react:
+    build: ./react
+    volumes:
+     - ./react/build/:/code/build/
+     - static_react:/code/build/
     
   nginx:
-    build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
+    build: ./nginx
     ports:
       - 8080:80
     volumes:
       - static_django:/code/staticfiles/
-      - ./react/build/:/code/build/
+      - static_react:/code/build/
     depends_on:
       - django
-  
-  
+      - react
 
 volumes:
   postgres-data: #db_dataを作成
   static_django: #静的データをdjango <-> nginxで共有
+  static_react:
